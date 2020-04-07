@@ -1,0 +1,8 @@
+{
+    "bot_username": {
+        "bot_password": "BOT_PASSWORD",
+        "bot_client_id": "BOT_CLIENT_ID",
+        "bot_client_secret": "BOT_CLIENT_SECRET",
+        "bot_user_agent": "BOT_USER_AGENT"
+    }
+}
