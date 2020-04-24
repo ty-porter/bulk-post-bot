@@ -1,0 +1,8 @@
+{
+  "sleep_enabled": true,
+  "sleep_time": {
+    "hours": 0,
+    "minutes": 1,
+    "seconds": 0
+  }
+}

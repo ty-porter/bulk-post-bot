@@ -1,6 +1,9 @@
-{
+[
+  {
+    "template_name": "test_template_1",
     "post_title": "Test Title",
     "is_self": true,
     "url": "https://www.example.com",
     "post_body": "This is a test."
-}
+  }
+]

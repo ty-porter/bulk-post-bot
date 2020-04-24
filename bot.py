@@ -1,8 +1,8 @@
 import datetime
 import json
-import pdb
 import praw
 import sys
+import time
 import traceback
 
 
@@ -15,7 +15,7 @@ class Bot():
                 username = subreddit_configuration['bot_username']
                 subreddit = subreddit_configuration['subreddit']
                 reddit = self.reddit_instance_for(username)
-                post_template = self.load_json('post_template.json')
+                post_template = self.post_template_for_account(username)
                 title = post_template['post_title']
 
                 if post_template['is_self']:
@@ -86,6 +86,18 @@ class Bot():
 
         return data[bot_username]
 
+    def post_template_for_account(self, username):
+        templates = self.load_json('post_templates.json')
+        accounts = self.load_json('accounts.json')
+        template_name = accounts[username]['use_template']
+
+        try:
+            data = [template for template in templates if template['template_name'] == template_name][0]
+        except IndexError:
+            data = templates[0]
+
+        return data
+
     def write_last_updated_date_for(self, config):
         configurations = self.load_json('subreddit_configurations.json')
 
@@ -110,7 +122,21 @@ class Bot():
 if __name__ == '__main__':
     while True:
         try:
+            with open('bot_settings.json') as f:
+                settings = json.load(f)
+
+            if settings['sleep_enabled'] == True:
+                t = settings['sleep_time']
+                hours = t['hours']
+                minutes = t['minutes']
+                seconds = t['seconds']
+
+                sleep_time = (hours * 3600) + (minutes * 60) + seconds
+            else:
+                sleep_time = 0
+
             Bot().botcode()
+            time.sleep(sleep_time)
         except KeyboardInterrupt:
             sys.exit(0)
         except Exception:
