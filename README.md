@@ -25,24 +25,21 @@ Keep in mind that if your sleep time is higher than the wait time on the post se
 
 # `accounts.json`:
 
-Here, you'll need to define each of your bot accounts that you intend to use:
+Here, you'll need to define each of your bot accounts that you intend to use (you can edit anything in CAPS):
 
 ```json
 {
-    "bot_username": { // Your bot username will need to be defined here.
+    "BOT_USERNAME": {
                         "bot_password": "BOT_PASSWORD",
                         "bot_client_id": "BOT_CLIENT_ID",
                         "bot_client_secret": "BOT_CLIENT_SECRET",
                         "bot_user_agent": "BOT_USER_AGENT",
                         "use_template": "test_template_1"
-                    },
-
-  . . .
-
+                    }
 }
 ```
 
-If you need help setting up a bot account or registering your script with Reddit, check out the post[here](https: // www.reddit.com/r/RequestABot/comments/cyll80/a_comprehensive_guide_to_running_your_reddit_bot/).
+If you need help setting up a bot account or registering your script with Reddit, check out the post [here](https://www.reddit.com/r/RequestABot/comments/cyll80/a_comprehensive_guide_to_running_your_reddit_bot/).
 
 Make sure your template name matches a template in `post_templates.json`! If you don't, it will default to the first post template in the list.
 
@@ -58,10 +55,7 @@ Here is where you'll define your post:
         "is_self": true,
         "url": "https://www.example.com",
         "post_body": "This is a test."
-    },
-    
-    . . .
-
+    }
 ]
 ```
 
@@ -87,10 +81,7 @@ Here you'll define each of the subreddits you intend to make your post to, the d
             "seconds": 0
         },
         "last_posted_on": null
-    },
-
-    . . .
-
+    }
 ]
 ```
 
